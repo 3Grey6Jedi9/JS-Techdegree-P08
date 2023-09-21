@@ -8,6 +8,7 @@ const sequelize = require('./models').sequelize;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const errorRouter = require('./routes/error')
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/error', errorRouter);
 
 
 
@@ -53,20 +55,37 @@ sequelize.sync()
 
 
 
-// catch 404 and forward to error handler
+
+// 404 handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// global error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  // Set the err.status property to 500 if status isn't already defined
+  err.status = err.status || 500;
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  // Set the err.message property to a user-friendly message if message isn't already defined
+  err.message = err.message || 'An unexpected error occurred.';
+
+  // Log the err object's status and message properties to the console
+  console.error(`Error status: ${err.status}`);
+  console.error(`Error message: ${err.message}`);
+
+  // Render the error template
+  res.render('error', { err });
 });
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = app;
