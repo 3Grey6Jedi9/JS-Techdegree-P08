@@ -53,6 +53,131 @@ sequelize.sync()
 
 
 
+// Render pages
+
+// Home route
+
+app.get('/', function(req,res){
+
+  // Redirect the user to the /books route
+
+  res.redirect('/books')
+});
+
+// Books route
+
+app.get('/books', async function (req,res){
+
+  // Getting the full list of books from the database
+
+  const books = await Book.findAll();
+
+  // Rendering all the books
+
+  res.render('books', {books});
+
+});
+
+
+
+
+// Showing the create new book form
+
+app.get('/books/new', function (req,res){
+
+  // Rendering the new-book.pug file
+
+  res.render('new-book');
+
+});
+
+// Posting a new book to the database
+
+app.post('books/new',  async function (req,res){
+
+      // Creating a new book in the database using the data that was submitted from the form
+
+  const book = await Book.create(req.body);
+
+      // Redirect the user to the show book page for the new book
+
+  res.redirect('/books/${book.id}');
+
+});
+
+
+// Showing book detail form
+
+
+app.get('/books/:id', async function(req,res){
+
+
+  // Getting the book with the specified ID from the database
+
+  const book = await Book.findByPk(req.params.id);
+
+  // If the book does not exist, sending a 404 error
+
+  if (!book) {
+
+  res.sendStatus(404);
+
+  return;
+
+  }
+
+  // Rendering the show-book.pug file, passing in the book
+  res.render('show-book', {book});
+
+});
+
+
+
+// Updating book info in the database
+
+app.post('/books/:id', async function(req,res){
+
+  // Getting the book with the specified ID from the database
+
+  const book = await Book.findByPk(req.params.id);
+
+  // If the book does not exists, send a 404 error
+
+  if (!book) {
+
+    res.sendStatus(404);
+    return;
+
+  }
+
+  // Update the book's data using the data that was submitted from the form
+
+  book.title = req.body.title;
+  book.author = req.body.author;
+  book.releaseDate = req.body.releaseDate;
+
+  // Saving the updated book to the database
+
+  await book.save();
+
+  // Redirecting the user to the show book page for the update book
+
+  res.redirect('/books/${book.id}');
+
+});
+
+
+
+// Deleting a book
+
+
+
+
+
+
+
+
+
 
 
 
@@ -76,12 +201,6 @@ app.use(function(err, req, res, next) {
   // Render the error template
   res.render('error', { err });
 });
-
-
-
-
-
-
 
 
 
