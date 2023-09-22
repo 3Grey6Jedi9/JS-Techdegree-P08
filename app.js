@@ -168,9 +168,35 @@ app.post('/books/:id', async function(req,res){
 
 
 
-// Deleting a book
 
 
+
+
+// DELETING A BOOK FROM THE DATABASE
+app.post('/books/:id/delete', async function (req,res) {
+
+
+  // Getting the book with the specified ID from the databse
+
+  const book = await Book.findByPk(req.params.id);
+
+  // If the book does not exist, send a 404 error
+
+  if (!book) {
+
+  res.sendStatus(404);
+  return;
+
+  }
+
+  // Delete the book from the database
+
+  await book.destroy();
+
+  // Redirect the user to the list of books
+  res.redirect('/books')
+
+})
 
 
 
@@ -185,6 +211,7 @@ app.post('/books/:id', async function(req,res){
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
 
 // global error handler
 app.use(function(err, req, res, next) {
@@ -201,6 +228,9 @@ app.use(function(err, req, res, next) {
   // Render the error template
   res.render('error', { err });
 });
+
+
+
 
 
 
