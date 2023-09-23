@@ -1,14 +1,2 @@
-extends layout
 
-block content
-    h1 New Book
-
-    form(action='/books/new', method='POST')
-        input(type='text', name='title', placeholder='Title')
-        input(type='text', name='author', placeholder='Author')
-        input(type='text', name='genre', placeholder='Genre')
-        input(type='number', name='year', placeholder='Year')
-
-        button Create New Book
-        button Cancel
 
