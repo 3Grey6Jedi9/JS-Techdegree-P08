@@ -17,7 +17,7 @@ router.get('/', async function(req,res,next){
 
   // Rendering the index file
 
-  res.render('index', {books});
+  res.render('index', { title: 'BOOKS', books});
 
 });
 
