@@ -1,13 +1,21 @@
 const express = require('express');
 var router = express.Router();
 const {Book} = require('../models');
-const app = express();
 
+
+
+router.get('/books', async (req,res)=> {
+
+  const books = await Book.findAll()
+
+  res.render('index', {books, title: 'BOOKS'});
+
+
+});
 
 /* GET home page. */
 
 router.get('/', async function(req,res,next){
-
 
   // Asynchronously get all the books from the database
 
@@ -17,9 +25,13 @@ router.get('/', async function(req,res,next){
 
   // Rendering the index file
 
-  res.render('index', { title: 'BOOKS', books});
+  res.redirect('/books');
 
 });
+
+
+
+
 
 
 
