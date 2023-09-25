@@ -50,6 +50,86 @@ router.get('/books/update', (req, res)=>{
 
 
 
+// Middleware function that checks if all of the required fields are present in the form data
+
+router.use('/books/new', (req,res,next)=>{
+
+  // Checking if the title field is present
+  if (!req.body.title) {
+
+    req.error = 'The title field si required.'
+    return next();
+
+  }
+
+  // Checking if the genre field is present
+  if (!req.body.genre) {
+
+    req.error = 'The genre field is required.';
+    return next();
+
+
+  }
+
+
+  // Check if the year field is present
+  if (!req.body.year) {
+
+    req.error = 'The year field is required.';
+    return next();
+  }
+
+  // If all of the required fields are present, continue to the next middleware function
+  next();
+
+
+});
+
+
+
+// Route handler for the /books/new route
+
+router.post('/books/new', async(req, res) =>{
+
+  if(req.error) {
+    // Render the error page
+
+    return res.render('error', {error: req.error});
+
+
+  }
+
+  // Create a new book
+
+  const book = await Book.create({
+
+    title: req.body.title,
+    author: req.body.author,
+    genre: req.body.genre,
+    year: req.body.year
+
+
+  });
+
+  // Redirect the user to the book list page
+  res.redirect('/books');
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
