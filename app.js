@@ -31,6 +31,10 @@ app.use('/error', errorRouter);
 
 
 
+
+
+
+
 // Connect to the database
 sequelize.authenticate()
   .then(() => {

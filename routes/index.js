@@ -13,6 +13,7 @@ router.get('/books', async (req,res)=> {
 
 });
 
+
 /* GET home page. */
 
 router.get('/', async function(req,res,next){
@@ -28,6 +29,19 @@ router.get('/', async function(req,res,next){
   res.redirect('/books');
 
 });
+
+// Rendering the new-book form
+
+
+router.get('/books/new', (req, res)=>{
+
+  res.render('new-book');
+
+
+});
+
+
+
 
 
 

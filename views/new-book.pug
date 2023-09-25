@@ -1,2 +1,15 @@
+extends layout
+
+block content
+    h1 Create New Book
+
+    form(action="/books/new" method="post")
+        input(type="text" name="title" placeholder="Title")
+        input(type="text" name="author" placeholder="Author")
+        input(type="text" name="genre" placeholder="Genre")
+        input(type="number" name="year" placeholder="Year")
+
+        button(type="submit") Create New Book
+        button(type="reset") Cancel
 
 
