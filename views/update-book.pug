@@ -1,1 +1,15 @@
+extends layout
+
+block content
+    h1 Update Book
+
+    form(action="/books/update" method="post")
+        input(type="text" name="title" placeholder="Title")
+        input(type="text" name="author" placeholder="Author")
+        input(type="text" name="genre" placeholder="Genre")
+        input(type="number" name="year" placeholder="Year")
+
+        button(type="submit") Update
+        button(type="reset") Cancel
+        button(type="submit") Delete
 

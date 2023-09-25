@@ -41,6 +41,13 @@ router.get('/books/new', (req, res)=>{
 });
 
 
+router.get('/books/update', (req, res)=>{
+
+  res.render('update-book');
+
+
+});
+
 
 
 
