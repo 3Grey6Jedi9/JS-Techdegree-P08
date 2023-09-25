@@ -50,6 +50,25 @@ router.get('/books/update', (req, res)=>{
 
 
 
+router.post('/books/new', async (req, res) => {
+  // Create a new book
+  const book = await Book.create({
+    title: req.body.title,
+    author: req.body.author,
+    genre: req.body.genre,
+    year: req.body.year
+  });
+
+  // Redirect the user to the book list page
+  res.redirect('/books');
+});
+
+
+
+
+
+
+
 module.exports = router;
 
 
