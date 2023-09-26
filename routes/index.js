@@ -65,6 +65,30 @@ router.post('/books/new', async (req, res) => {
 
 
 
+router.get("/books/:id", async (req, res)=>{
+
+
+  const book = await Book.findByPk(req.params.id);
+
+  if (!book) {
+
+    return res.status(404).send('Book not found');
+
+
+  }
+
+  res.render('show-book', {book})
+
+
+
+})
+
+
+
+
+
+
+
 
 
 

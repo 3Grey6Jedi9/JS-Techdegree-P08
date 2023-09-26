@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    body
+
+    form(action="/books/" + book.dataValues.id, method="POST")
+        input(type="hidden", name="_method", value=method)
+        h1 Book Detail
+
+        ul
+            li
+                label Title:
+                input(type="text", name="title", value=book.dataValues.title)
+            li
+                label Author:
+                input(type="text", name="author", value=book.dataValues.author)
+            li
+                label Genre:
+                input(type="text", name="genre", value=book.dataValues.genre)
+            li
+                label Year:
+                input(type="number", name="year", value=book.dataValues.year)
+
+
+        button(type="delete") Delete Book
+        button(type="reset") Cancel
+        button(type="submit") Update
