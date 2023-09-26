@@ -21,7 +21,8 @@ block content
                 label Year:
                 input(type="number", name="year", value=book.dataValues.year)
 
-
-        button(type="delete") Delete Book
+        button(type="delete", onclick="deleteConfirmation()") Delete Book
         button(type="reset") Cancel
         button(type="submit") Update
+
+    script(src="../scripts/delete-confirmation.js")
