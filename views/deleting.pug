@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    body
+
+    h1 Delete Book
+
+    p Are you sure you want to delete the book "#{book.dataValues.title}"?
+
+    form(action="/books/:id/deleting", method="post")
+        input(type="hidden", name="_method", value="DELETE")
+        button(type="submit") Yes
+        a(href="/books/"+book.dataValues.id+"/update", class="btn btn-primary") No
+

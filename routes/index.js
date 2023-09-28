@@ -70,6 +70,7 @@ router.get("/books/:id", async (req, res)=>{
 
   const book = await Book.findByPk(req.params.id);
 
+
   if (!book) {
 
     return res.status(404).send('Book not found');
@@ -85,12 +86,24 @@ router.get("/books/:id", async (req, res)=>{
 
 
 
-router.delete('/books/:id', async (req, res) => {
+router.get('/books/:id/deleting', async (req, res)=>{
+
+  const book = await Book.findByPk(req.params.id);
+
+  res.render('deleting', {book});
+
+
+});
+
+
+
+
+
+
+router.delete('/books/:id/deleting', async (req, res) => {
 
 
     const bookId = req.params.id;
-
-    console.log(bookId);
 
     const book = await Book.findByPk(bookId);
 
@@ -106,7 +119,11 @@ router.delete('/books/:id', async (req, res) => {
 
 });
 
-router.put('/books/:id', async (req, res) => {
+
+
+
+
+router.put('/books/:id/update', async (req, res) => {
 
     const bookId = req.params.id;
 
@@ -118,13 +135,13 @@ router.put('/books/:id', async (req, res) => {
 
     }
 
-    book.title = req.body.title;
+    book.dataValues.title = req.body.title;
 
-    book.author = req.body.author;
+    book.dataValues.author = req.body.author;
 
-    book.genre = req.body.genre;
+    book.dataValues.genre = req.body.genre;
 
-    book.year = req.body.year;
+    book.dataValues.year = req.body.year;
 
     await book.save();
 
