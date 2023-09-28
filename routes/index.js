@@ -100,7 +100,7 @@ router.get('/books/:id/deleting', async (req, res)=>{
 
 
 
-router.delete('/books/:id/deleting', async (req, res) => {
+router.post('/books/:id/deleting', async (req, res) => {
 
 
     const bookId = req.params.id;
