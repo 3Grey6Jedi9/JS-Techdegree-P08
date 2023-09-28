@@ -123,7 +123,12 @@ router.post('/books/:id/deleting', async (req, res) => {
 
 
 
-router.put('/books/:id/update', async (req, res) => {
+
+
+
+
+
+router.post('/books/:id', async (req, res) => {
 
     const bookId = req.params.id;
 
@@ -144,6 +149,8 @@ router.put('/books/:id/update', async (req, res) => {
     book.dataValues.year = req.body.year;
 
     await book.save();
+
+    console.log(req.body.year)
 
     res.redirect('/books');
 
