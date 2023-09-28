@@ -85,7 +85,52 @@ router.get("/books/:id", async (req, res)=>{
 
 
 
+router.delete('/books/:id', async (req, res) => {
 
+
+    const bookId = req.params.id;
+
+    console.log(bookId);
+
+    const book = await Book.findByPk(bookId);
+
+    if (!book) {
+
+        return res.status(404).send('Book not found');
+
+    }
+
+    await book.destroy();
+
+    res.redirect('/books');
+
+});
+
+router.put('/books/:id', async (req, res) => {
+
+    const bookId = req.params.id;
+
+    const book = await Book.findByPk(bookId);
+
+    if (!book) {
+
+        return res.status(404).send('Book not found');
+
+    }
+
+    book.title = req.body.title;
+
+    book.author = req.body.author;
+
+    book.genre = req.body.genre;
+
+    book.year = req.body.year;
+
+    await book.save();
+
+    res.redirect('/books');
+
+});
 
 
 

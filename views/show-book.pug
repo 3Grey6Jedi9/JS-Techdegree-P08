@@ -3,8 +3,8 @@ extends layout
 block content
     body
 
-    form(action="/books/" + book.dataValues.id, method="POST")
-        input(type="hidden", name="_method", value=method)
+    form(action="/books/:id", method="PUT")
+        input(type="hidden", name="_method", value="DELETE")
         h1 Book Detail
 
         ul
@@ -21,8 +21,7 @@ block content
                 label Year:
                 input(type="number", name="year", value=book.dataValues.year)
 
-        button(type="delete", onclick="deleteConfirmation()") Delete Book
+        button(type="submit", name="action", value="update") Update
+        button(type="submit", name="action", value="delete") Delete Book
         button(type="reset") Cancel
-        button(type="submit") Update
 
-    script(src="../scripts/delete-confirmation.js")
