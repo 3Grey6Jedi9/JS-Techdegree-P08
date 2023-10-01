@@ -41,9 +41,11 @@ router.get('/books/new', (req, res)=>{
 });
 
 
-router.get('/books/update', (req, res)=>{
+router.get('/books/:id/update', async (req, res)=>{
 
-  res.render('update-book');
+    const book = await Book.findByPk(req.params.id);
+
+    res.render('update-book', {book});
 
 
 });
@@ -128,34 +130,31 @@ router.post('/books/:id/deleting', async (req, res) => {
 
 
 
-router.post('/books/:id', async (req, res) => {
-
+router.post('/books/:id/update', async (req, res) => {
     const bookId = req.params.id;
 
     const book = await Book.findByPk(bookId);
 
     if (!book) {
-
         return res.status(404).send('Book not found');
-
     }
 
-    book.dataValues.title = req.body.title;
+    // Update the book's properties directly
+    book.title = req.body.title;
+    book.author = req.body.author;
+    book.genre = req.body.genre;
+    book.year = req.body.year;
 
-    book.dataValues.author = req.body.author;
-
-    book.dataValues.genre = req.body.genre;
-
-    book.dataValues.year = req.body.year;
-
-    await book.save();
-
-    console.log(req.body.year)
-
-    res.redirect('/books');
-
+    try {
+        // Save the changes to the database
+        await book.save();
+        res.redirect('/books');
+    } catch (error) {
+        // Handle any errors that occur during saving
+        console.error(error);
+        res.status(500).send('Error updating book');
+    }
 });
-
 
 
 

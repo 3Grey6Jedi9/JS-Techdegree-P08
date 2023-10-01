@@ -3,7 +3,7 @@ extends layout
 block content
     body
 
-    form(action="/books/"+book.dataValues.id, method="post")
+    form(action="/books/"+book.dataValues.id+"/update?_method=PUT", method="POST")
         h1 Book Detail
 
         ul
