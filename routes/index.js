@@ -67,6 +67,7 @@ router.post('/books/new', async (req, res) => {
 
 
 
+
 router.get("/books/:id", async (req, res)=>{
 
 
@@ -130,7 +131,7 @@ router.post('/books/:id/deleting', async (req, res) => {
 
 
 
-router.post('/books/:id/update', async (req, res) => {
+router.post('/books/:id', async (req, res) => {
     const bookId = req.params.id;
 
     const book = await Book.findByPk(bookId);
