@@ -67,6 +67,8 @@ app.use(function(req, res, next) {
 });
 
 
+
+
 // global error handler
 app.use(function(err, req, res, next) {
   // Set the err.status property to 500 if status isn't already defined
@@ -79,8 +81,11 @@ app.use(function(err, req, res, next) {
   console.error(`Error status: ${err.status}`);
   console.error(`Error message: ${err.message}`);
 
-  // Render the error template
-  res.render('error', { err });
+  if (err.status === 404) {
+    res.render('page-not-found');
+  } else {
+    res.render('error', {err});
+  }
 });
 
 
