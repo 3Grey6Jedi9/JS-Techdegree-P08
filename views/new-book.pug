@@ -12,11 +12,13 @@ block content
         button(type="submit") Create New Book
         button(type="reset") Cancel
 
-        div(class="error")
-            if (errors)
+        if (validationErrors && validationErrors.length > 0)
+            div(class="error")
                 h3 Ooops!
-                p #{errors.title}
-                p #{errors.author}
+                ul
+                    each error in validationErrors
+                        li= error
+
 
 
 

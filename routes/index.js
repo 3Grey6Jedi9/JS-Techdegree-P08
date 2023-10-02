@@ -44,46 +44,43 @@ router.get('/books/new', (req, res)=>{
 
 
 router.post('/books/new', async (req, res) => {
-
     // Getting the title and author fields from the request body
-
     const title = req.body.title;
     const author = req.body.author;
 
-    //Checking if the title and author fields are empty
+    try {
+        // Create a new book
+        const book = await Book.create({
+            title,
+            author,
+            genre: req.body.genre,
+            year: req.body.year
+        });
 
-    if (!title) {
+        console.log(`Title: ${title}`);
+        console.log(`Author: ${author}`);
 
-        // Setting the errors property on the request object
-        req.errors = {
-            title: 'The title field is required.'
-        };
-        res.render('new-book', req)
-        return;
 
-    } else if (!author) {
+        // Redirect the user to the book list page
+        res.redirect('/books');
+    } catch (error) {
+        // Handle validation errors
+        if (error.name === 'SequelizeValidationError') {
+            // Get the validation error messages
+            const validationErrors = error.errors.map((err) => err.message);
 
-        req.errors = {
-
-            author: 'The author field is required.'
-
-        };
-
-        res.render('new-book', req)
-        return;
+            // Render the form with validation errors
+            res.render('new-book', { validationErrors });
+        } else {
+            // Handle other errors
+            console.error(error);
+            res.status(500).send('Error creating book');
+        }
     }
-
-  // Create a new book
-  const book = await Book.create({
-    title,
-    author,
-    genre: req.body.genre,
-    year: req.body.year
-  });
-
-  // Redirect the user to the book list page
-  res.redirect('/books');
 });
+
+
+
 
 
 
