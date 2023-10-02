@@ -41,15 +41,6 @@ router.get('/books/new', (req, res)=>{
 });
 
 
-router.get('/books/:id/update', async (req, res)=>{
-
-    const book = await Book.findByPk(req.params.id);
-
-    res.render('update-book', {book});
-
-
-});
-
 
 
 router.post('/books/new', async (req, res) => {
@@ -64,6 +55,12 @@ router.post('/books/new', async (req, res) => {
   // Redirect the user to the book list page
   res.redirect('/books');
 });
+
+
+
+
+
+
 
 
 
@@ -156,6 +153,13 @@ router.post('/books/:id', async (req, res) => {
         res.status(500).send('Error updating book');
     }
 });
+
+
+
+
+
+
+
 
 
 
