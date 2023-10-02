@@ -4,14 +4,26 @@ const {Book} = require('../models');
 
 
 
-router.get('/books', async (req,res)=> {
+router.get('/books', async (req, res) => {
+  const page = parseInt(req.query.page, 10) || 1; // Get the requested page number or default to 1
+  const perPage = 20; // Number of books to display per page
 
-  const books = await Book.findAll()
+  try {
+    const { count, rows: books } = await Book.findAndCountAll({
+      limit: perPage,
+      offset: (page - 1) * perPage,
+    });
 
-  res.render('index', {books, title: 'BOOKS'});
+    const totalPages = Math.ceil(count / perPage);
 
-
+    res.render('index', { books, title: 'BOOKS', totalPages, currentPage: page });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error fetching books');
+  }
 });
+
+
 
 
 /* GET home page. */

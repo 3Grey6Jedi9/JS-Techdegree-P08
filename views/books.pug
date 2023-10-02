@@ -17,6 +17,17 @@ table
 
 
 
+if (totalPages > 1)
+  ul.pagination
+    if (currentPage > 1)
+      li.page-item
+        a.page-link(href=`/books?page=${currentPage - 1}`) Previous
+    each page in Array.from({ length: totalPages }, (_, i) => i + 1)
+      li.page-item(class=currentPage === page ? 'active' : '')
+        a.page-link(href=`/books?page=${page}`, class=currentPage === page ? 'active' : '')= page
+    if (currentPage < totalPages)
+      li.page-item
+        a.page-link(href=`/books?page=${currentPage + 1}`) Next
 
 
                 
