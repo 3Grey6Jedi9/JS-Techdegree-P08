@@ -13,6 +13,13 @@ block content
         button(type="reset") Cancel
 
         div(class="error")
+            if (errors)
+                h3 Ooops!
+                p #{errors.title}
+                p #{errors.author}
+
+
+
 
 
 

@@ -44,10 +44,39 @@ router.get('/books/new', (req, res)=>{
 
 
 router.post('/books/new', async (req, res) => {
+
+    // Getting the title and author fields from the request body
+
+    const title = req.body.title;
+    const author = req.body.author;
+
+    //Checking if the title and author fields are empty
+
+    if (!title) {
+
+        // Setting the errors property on the request object
+        req.errors = {
+            title: 'The title field is required.'
+        };
+        res.render('new-book', req)
+        return;
+
+    } else if (!author) {
+
+        req.errors = {
+
+            author: 'The author field is required.'
+
+        };
+
+        res.render('new-book', req)
+        return;
+    }
+
   // Create a new book
   const book = await Book.create({
-    title: req.body.title,
-    author: req.body.author,
+    title,
+    author,
     genre: req.body.genre,
     year: req.body.year
   });
