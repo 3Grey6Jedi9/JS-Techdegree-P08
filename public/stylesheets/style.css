@@ -95,3 +95,36 @@ input[type=text] {
 .error {
   color: rgb(236, 15, 15);
 }
+
+
+
+/* Style for pagination container */
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+}
+
+/* Style for each pagination item */
+.pagination li {
+  margin: 0 5px;
+  display: inline-block; /* Display items horizontally */
+}
+
+/* Style for the active pagination item */
+.pagination .active {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Style for the pagination links */
+.pagination a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+/* Style for the previous and next buttons */
+.pagination .prev-next {
+  margin: 0 10px;
+}

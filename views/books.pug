@@ -17,17 +17,20 @@ table
 
 
 
-if (totalPages > 1)
-  ul.pagination
-    if (currentPage > 1)
-      li.page-item
-        a.page-link(href=`/books?page=${currentPage - 1}`) Previous
+ul.pagination
+    li
+      if currentPage > 1
+        a(href=`/books?page=${currentPage - 1}`, class=(currentPage === 1 ? 'disabled' : '')) Previous
+      else
+        span.disabled Previous
     each page in Array.from({ length: totalPages }, (_, i) => i + 1)
-      li.page-item(class=currentPage === page ? 'active' : '')
-        a.page-link(href=`/books?page=${page}`, class=currentPage === page ? 'active' : '')= page
-    if (currentPage < totalPages)
-      li.page-item
-        a.page-link(href=`/books?page=${currentPage + 1}`) Next
+      li(class=(currentPage === page ? 'active' : ''))
+        a(href=`/books?page=${page}`)= page
+    li
+      if currentPage < totalPages
+        a(href=`/books?page=${currentPage + 1}`, class=(currentPage === totalPages ? 'disabled' : '')) Next
+      else
+        span.disabled Next
 
 
                 
