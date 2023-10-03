@@ -8,7 +8,7 @@ const { Sequelize, Op } = require('sequelize');
 router.get('/books', async (req, res) => {
   const page = parseInt(req.query.page, 10) || 1; // Get the requested page number or default to 1
   const perPage = 20; // Number of books to display per page
-  const search = req.query.search || ''; // Get the search query or default to an empty string
+  const search = (req.query.search || '').toLowerCase(); // Get the search query or default to an empty string
 
     console.log(search)
     try {
