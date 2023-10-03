@@ -3,10 +3,17 @@ extends layout
 block content
   h1= title
 
+  form(action="/books" method="get" class="search-form")
+    input(type="text" name="search" placeholder="Search by Title, Author, Genre, or Year")
+    button(type="submit") Search
+
+
   a(href="/books/new", class="btn btn-primary") Create New Book
 
 
+  if search
 
+    h3 Search Results for '#{search}'
 
   include books
 

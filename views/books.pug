@@ -20,17 +20,23 @@ table
 ul.pagination
     li
       if currentPage > 1
-        a(href=`/books?page=${currentPage - 1}`, class=(currentPage === 1 ? 'disabled' : '')) Previous
+        a(href=`/books?page=${currentPage - 1}&search=${search}`, class=(currentPage === 1 ? 'disabled' : '')) Previous
       else
         span.disabled Previous
     each page in Array.from({ length: totalPages }, (_, i) => i + 1)
       li(class=(currentPage === page ? 'active' : ''))
-        a(href=`/books?page=${page}`)= page
+        a(href=`/books?page=${page}&search=${search}`)= page
     li
       if currentPage < totalPages
-        a(href=`/books?page=${currentPage + 1}`, class=(currentPage === totalPages ? 'disabled' : '')) Next
+        a(href=`/books?page=${currentPage + 1}&search=${search}`, class=(currentPage === totalPages ? 'disabled' : '')) Next
       else
         span.disabled Next
+
+
+
+
+
+
 
 
                 

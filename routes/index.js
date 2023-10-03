@@ -1,27 +1,55 @@
 const express = require('express');
 var router = express.Router();
-const {Book} = require('../models');
+const { Book } = require('../models');
+const { Sequelize, Op } = require('sequelize');
 
 
 
 router.get('/books', async (req, res) => {
   const page = parseInt(req.query.page, 10) || 1; // Get the requested page number or default to 1
   const perPage = 20; // Number of books to display per page
+  const search = req.query.search || ''; // Get the search query or default to an empty string
 
-  try {
+    console.log(search)
+    try {
+    // Define the search condition based on the search query
+    const searchCondition = {
+      [Op.or]: [
+        {
+          title: { [Op.like]: `%${search}%` }, // Case-insensitive search for title
+        },
+        {
+          author: { [Op.like]: `%${search}%` }, // Case-insensitive search for author
+        },
+        {
+          genre: { [Op.like]: `%${search}%` }, // Case-insensitive search for genre
+        },
+        {
+          year: { [Op.like]: `%${search}%` }, // Case-insensitive search for year
+        },
+      ],
+    };
+
     const { count, rows: books } = await Book.findAndCountAll({
+      where: search ? searchCondition : {}, // Apply search condition if a search query exists
       limit: perPage,
       offset: (page - 1) * perPage,
     });
 
     const totalPages = Math.ceil(count / perPage);
 
-    res.render('index', { books, title: 'BOOKS', totalPages, currentPage: page });
+    res.render('index', { books, title: 'BOOKS', totalPages, currentPage: page, search });
   } catch (error) {
     console.error(error);
     res.status(500).send('Error fetching books');
   }
 });
+
+
+
+
+
+
 
 
 
