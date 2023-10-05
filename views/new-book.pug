@@ -9,8 +9,8 @@ block content
         input(type="text" name="genre" placeholder="Genre")
         input(type="number" name="year" placeholder="Year")
 
-        button(type="submit") Create New Book
-        button(type="reset") Cancel
+        button(type="submit" class="btn") Create New Book
+        button(type="reset" class="btn") Cancel
 
         if (validationErrors && validationErrors.length > 0)
             div(class="error")

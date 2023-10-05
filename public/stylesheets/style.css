@@ -10,6 +10,43 @@ a {
   transition: 0.4s;
 }
 
+
+/* */
+
+.btn {
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #01b189;
+
+}
+
+a.btn {
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.btn:hover {
+  background-color: #01b189;
+
+}
+
+
+/* */
+
+
+
+
   a:hover {
     color: black;
   }
@@ -24,14 +61,7 @@ a.button, input[type=submit] {
   cursor: pointer;
 }
 
-form a.button, input[type=submit] {
-  margin-left: 140px;
-  transition: 0.4s;
-}
 
-input[type=submit] {
-  border: 0;
-}
 
   a.button:hover, input[type=submit]:hover {
     background-color: #01b189;
@@ -95,6 +125,9 @@ input[type=text] {
 .error {
   color: rgb(236, 15, 15);
 }
+
+
+
 
 
 
@@ -168,14 +201,5 @@ input[type=text] {
 
 
 
-/* Style for the create-book button */
 
-a.btn.btn-primary {
-  background-color: #333;
-  color: white;
-  padding: 5px 5px;
-  border-radius: 5px;
-  text-decoration: none;
-  margin: 10px;
-}
 

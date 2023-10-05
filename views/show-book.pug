@@ -20,7 +20,7 @@ block content
                 label Year:
                 input(type="number", name="year", value=book.dataValues.year)
 
-        button(type="submit") Update Book
-        a(href="/books/"+book.dataValues.id+"/deleting", class="btn btn-primary") Delete Book
-        button(type="reset") Cancel
+        button(type="submit" class="btn") Update Book
+        a(href="/books/"+book.dataValues.id+"/deleting", class="btn") Delete Book
+        button(type="reset" class="btn") Cancel
 
