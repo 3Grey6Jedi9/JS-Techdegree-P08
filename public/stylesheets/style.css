@@ -139,8 +139,13 @@ input[type=text] {
   margin: 10px 0;
 }
 
+.search-form input[type="text"],
+.search-form button {
+  display: inline-block;
+}
+
 .search-form input[type="text"] {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -153,8 +158,24 @@ input[type=text] {
   border-radius: 4px;
   padding: 10px 20px;
   cursor: pointer;
+  margin-left: 10px;
 }
 
 .search-form button:hover {
   background-color: #0056b3;
 }
+
+
+
+
+/* Style for the create-book button */
+
+a.btn.btn-primary {
+  background-color: #333;
+  color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 10px;
+}
+
