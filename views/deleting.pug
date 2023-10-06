@@ -9,6 +9,8 @@ block content
 
     form(action="/books/"+book.dataValues.id+"/deleting", method="post")
         input(type="hidden", name="_method", value="DELETE")
-        button(type="submit" class="btn") Yes
-        a(href="/books/"+book.dataValues.id, class="btn btn-primary") No
+        button(type="submit", class="btn") Yes
+        a(href="/books/"+book.dataValues.id, class="btn") No
+
+
 
