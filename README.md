@@ -14,4 +14,5 @@ show-book.pug. Moreover, the users see clearly where and how update the book (fr
 
 B) The CANCEL buttons 
 
-Comments from Slack: One other thing  
+The function of the CANCEL buttons is to CANCEL any text I input. So if I am writing something and I press CANCEL 
+I get back to the initial state. 
