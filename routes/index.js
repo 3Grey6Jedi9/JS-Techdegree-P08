@@ -196,29 +196,41 @@ router.post('/books/:id/deleting', async (req, res) => {
 
 router.post('/books/:id', async (req, res) => {
     const bookId = req.params.id;
-
-    const book = await Book.findByPk(bookId);
-
-    if (!book) {
-        return res.status(404).send('Book not found');
-    }
-
-    // Update the book's properties directly
-    book.title = req.body.title;
-    book.author = req.body.author;
-    book.genre = req.body.genre;
-    book.year = req.body.year;
+    let book; // Define the book variable
 
     try {
+        book = await Book.findByPk(bookId);
+
+        if (!book) {
+            return res.status(404).send('Book not found');
+        }
+
+        // Update the book's properties directly
+        book.title = req.body.title;
+        book.author = req.body.author;
+        book.genre = req.body.genre;
+        book.year = req.body.year;
+
         // Save the changes to the database
         await book.save();
         res.redirect('/books');
     } catch (error) {
-        // Handle any errors that occur during saving
-        console.error(error);
-        res.status(500).send('Error updating book');
+        // Handle validation errors
+        if (error.name === 'SequelizeValidationError') {
+            // Get the validation error messages
+            const validationErrors = error.errors.map((err) => err.message);
+
+            // Render the form with validation errors
+            return res.render('show-book', { book, validationErrors });
+        } else {
+            // Handle other errors
+            console.error(error);
+            return res.status(500).send('Error updating book');
+        }
     }
 });
+
+
 
 
 

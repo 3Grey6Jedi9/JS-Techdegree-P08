@@ -10,7 +10,7 @@ block content
         input(type="number" name="year" placeholder="Year")
 
         button(type="submit" class="btn") Create New Book
-        button(type="reset" class="btn") Cancel
+        a(href=`/books/new`, class="btn") Cancel
 
         if (validationErrors && validationErrors.length > 0)
             div(class="error")

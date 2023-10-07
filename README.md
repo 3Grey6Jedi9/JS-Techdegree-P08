@@ -12,7 +12,5 @@ Comments from Slack: update-book.pug is missing, though you do have a show-book.
 Personal Commets: Considering  my program structure I didn't think that an update-book.pug file was necessary since I am managing that through the
 show-book.pug. Moreover, the users see clearly where and how update the book (from my point of view).
 
-B) The CANCEL buttons 
 
-The function of the CANCEL buttons is to CANCEL any text I input. So if I am writing something and I press CANCEL 
-I get back to the initial state. 
+
