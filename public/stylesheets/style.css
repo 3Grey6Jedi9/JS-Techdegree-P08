@@ -6,29 +6,6 @@ body {
 
 
 
-button.btn, a.btn {
-  background-color: #333;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-button.btn:hover, a.btn:hover {
-  background-color: #01b189;
-}
-
-button.btn + a.btn {
-  margin-left: 10px;
-}
-
-
-
-
-
-
 
 
 
@@ -58,7 +35,7 @@ a {
 }
 
 .btn:hover {
-  background-color: lightsteelblue;
+  background-color: darkblue;
 
 }
 
@@ -177,6 +154,33 @@ input[type=text] {
 .error {
   color: rgb(236, 15, 15);
 }
+
+
+
+
+/* new book */
+
+
+
+
+.label {
+  display: inline-block;
+  width: 20%;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.input {
+  display: inline-block;
+  width: 70%;
+  margin-bottom: 10px;
+}
+
+
+
+
+/* new book */
+
 
 
 
