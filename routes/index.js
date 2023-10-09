@@ -151,6 +151,38 @@ router.get("/books/:id", async (req, res)=>{
 })
 
 
+// Rendering the update-book form
+
+
+router.get("/books/:id/update", async (req, res)=>{
+
+
+  const book = await Book.findByPk(req.params.id);
+
+
+  if (!book) {
+
+    return res.status(404).send('Book not found');
+
+
+  }
+
+  res.render('update-book', {book})
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
 
 router.get('/books/:id/delete', async (req, res)=>{
 
@@ -194,7 +226,7 @@ router.post('/books/:id/delete', async (req, res) => {
 
 
 
-router.post('/books/:id', async (req, res) => {
+router.post('/books/:id/update', async (req, res) => {
     const bookId = req.params.id;
     let book; // Define the book variable
 
@@ -221,7 +253,7 @@ router.post('/books/:id', async (req, res) => {
             const validationErrors = error.errors.map((err) => err.message);
 
             // Render the form with validation errors
-            return res.render('show-book', { book, validationErrors });
+            return res.render('update-book', { book, validationErrors });
         } else {
             // Handle other errors
             console.error(error);

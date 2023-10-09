@@ -1,31 +1,23 @@
 extends layout
 
 block content
-    body
-        form(action=`/books/${book.id}?_method=PUT`, method="POST")
-            h1 Update Book
+  body
+    ul
+      li
+        label Title:
+        span #{book.title}
+      li
+        label Author:
+        span #{book.author}
+      li
+        label Genre:
+        span #{book.genre}
+      li
+        label Year:
+        span #{book.year}
 
-            ul
-                li
-                    label Title:
-                    input(type="text", name="title", value=book.title)
-                li
-                    label Author:
-                    input(type="text", name="author", value=book.author)
-                li
-                    label Genre:
-                    input(type="text", name="genre", value=book.genre)
-                li
-                    label Year:
-                    input(type="number", name="year", value=book.year)
+    a(href=`/books/${book.id}/update`, class="btn") Update Book
+    a(href=`/books/${book.id}/delete`, class="btn") Delete Book
+    a(href="/books", class="btn") Cancel
 
-            button(type="submit" class="btn") Update Book
-            a(href=`/books/${book.id}/delete`, class="btn") Delete Book
-            a(href="/books", class="btn") Cancel
 
-            if (validationErrors && validationErrors.length > 0)
-                div(class="error")
-                    h3 Oops!
-                    ul
-                        each error in validationErrors
-                            li= error
