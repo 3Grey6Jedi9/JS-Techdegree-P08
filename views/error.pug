@@ -2,9 +2,14 @@ extends layout
 
 block content
   h1 Error
-  p An error occurred.
+
+  if (!book)
+    p The book you are trying to visualize does not exist.
+  else
+    p An error occurred.
 
   if (error)
     pre #{error.stack}
+
 
 

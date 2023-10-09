@@ -139,7 +139,7 @@ router.get("/books/:id", async (req, res)=>{
 
   if (!book) {
 
-    return res.status(404).send('Book not found');
+    return res.render('error', {book});
 
 
   }
@@ -162,8 +162,7 @@ router.get("/books/:id/update", async (req, res)=>{
 
   if (!book) {
 
-    return res.status(404).send('Book not found');
-
+        return res.render('error', {book});
 
   }
 
