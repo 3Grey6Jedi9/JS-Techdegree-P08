@@ -21,6 +21,7 @@ block content
 
             button(type="submit" class="btn") Update Book
             a(href="/books", class="btn") Cancel
+            a(href=`/books/${book.id}/delete`, class="btn") Delete Book
 
             if (validationErrors && validationErrors.length > 0)
                 div(class="error")
