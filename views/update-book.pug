@@ -4,7 +4,12 @@ block content
     body
         form(action=`/books/${book.id}/update?_method=PUT`, method="POST")
             h1 Update Book
-
+            if (validationErrors && validationErrors.length > 0)
+                div(class="error")
+                    h3 Oops!
+                    ul
+                        each error in validationErrors
+                            li= error
             ul
                 li
                     label(for="title") Title:
@@ -23,12 +28,7 @@ block content
             a(href="/books", class="btn") Cancel
             a(href=`/books/${book.id}/delete`, class="btn") Delete Book
 
-            if (validationErrors && validationErrors.length > 0)
-                div(class="error")
-                    h3 Oops!
-                    ul
-                        each error in validationErrors
-                            li= error
+
 
 
 

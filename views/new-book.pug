@@ -4,6 +4,12 @@ block content
     h1 New Book
 
     form(action="/books/new" method="post" class="form")
+        if (validationErrors && validationErrors.length > 0)
+            div(class="error")
+                h3 Ooops!
+                ul
+                    each error in validationErrors
+                        li= error
         div(class="form-row")
             .label
                 label(for="title") TITLE:
@@ -25,12 +31,7 @@ block content
         button(type="submit" class="btn") Create New Book
         a(href="/books", class="btn") Cancel
 
-        if (validationErrors && validationErrors.length > 0)
-            div(class="error")
-                h3 Ooops!
-                ul
-                    each error in validationErrors
-                        li= error
+
 
 
         script(src="/scripts/focus.js")
