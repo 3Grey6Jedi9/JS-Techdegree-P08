@@ -7,17 +7,17 @@ block content
 
             ul
                 li
-                    label Title:
-                    input(type="text", name="title", value=book.title)
+                    label(for="title") Title:
+                    input(type="text", name="title", value=book.title, id="title")
                 li
-                    label Author:
-                    input(type="text", name="author", value=book.author)
+                    label(for="author") Author:
+                    input(type="text", name="author", value=book.author, id="author")
                 li
-                    label Genre:
-                    input(type="text", name="genre", value=book.genre)
+                    label(for="genre") Genre:
+                    input(type="text", name="genre", value=book.genre, id="genre")
                 li
-                    label Year:
-                    input(type="number", name="year", value=book.year)
+                    label(for="year") Year:
+                    input(type="number", name="year", value=book.year, id="year")
 
             button(type="submit" class="btn") Update Book
             a(href="/books", class="btn") Cancel
@@ -28,3 +28,7 @@ block content
                     ul
                         each error in validationErrors
                             li= error
+
+
+
+    script(src="../scripts/focus.js")
