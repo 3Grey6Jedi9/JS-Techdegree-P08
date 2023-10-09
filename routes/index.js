@@ -38,7 +38,7 @@ router.get('/books', async (req, res) => {
 
     const totalPages = Math.ceil(count / perPage);
 
-    res.render('index', { books, title: 'BOOKS', totalPages, currentPage: page, search });
+    res.render('index', { books, title: 'Books', totalPages, currentPage: page, search });
   } catch (error) {
     console.error(error);
     res.status(500).send('Error fetching books');

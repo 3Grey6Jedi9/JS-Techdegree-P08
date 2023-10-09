@@ -92,13 +92,26 @@ table {
 
   margin-top: 20px;
 
-  width: 85%;
+  width: 100%;
 
 }
 
 
 /*table */
 
+/* title */
+
+
+h1 {
+
+ margin-left: 10px;
+ font-size: 45px;
+
+
+}
+
+
+/* title */
 
   a:hover {
     color: black;
@@ -223,7 +236,7 @@ input[type=text] {
 }
 
 .search-form input[type="text"] {
-  width: 70%;
+  width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
