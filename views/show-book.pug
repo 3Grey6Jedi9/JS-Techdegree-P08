@@ -20,7 +20,7 @@ block content
                     input(type="number", name="year", value=book.year)
 
             button(type="submit" class="btn") Update Book
-            a(href=`/books/${book.id}/deleting`, class="btn") Delete Book
+            a(href=`/books/${book.id}/delete`, class="btn") Delete Book
             a(href=`/books/${book.id}`, class="btn") Cancel
 
             if (validationErrors && validationErrors.length > 0)

@@ -152,11 +152,11 @@ router.get("/books/:id", async (req, res)=>{
 
 
 
-router.get('/books/:id/deleting', async (req, res)=>{
+router.get('/books/:id/delete', async (req, res)=>{
 
   const book = await Book.findByPk(req.params.id);
 
-  res.render('deleting', {book});
+  res.render('delete', {book});
 
 
 });
@@ -166,7 +166,7 @@ router.get('/books/:id/deleting', async (req, res)=>{
 
 
 
-router.post('/books/:id/deleting', async (req, res) => {
+router.post('/books/:id/delete', async (req, res) => {
 
 
     const bookId = req.params.id;

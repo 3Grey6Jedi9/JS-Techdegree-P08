@@ -7,7 +7,7 @@ block content
 
     p Are you sure you want to delete the book "#{book.dataValues.title}"?
 
-    form(action="/books/"+book.dataValues.id+"/deleting", method="post")
+    form(action="/books/"+book.dataValues.id+"/delete", method="post")
         input(type="hidden", name="_method", value="DELETE")
         button(type="submit", class="btn") Yes
         a(href="/books/"+book.dataValues.id, class="btn") No
