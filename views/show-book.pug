@@ -2,7 +2,7 @@ extends layout
 
 block content
   body
-    ul
+    ul(class="shul")
       li
         label Title:
         span #{book.title}
@@ -16,9 +16,9 @@ block content
         label Year:
         span #{book.year}
 
-    a(href=`/books/${book.id}/update`, class="btn") Update Book
-    a(href=`/books/${book.id}/delete`, class="btn") Delete Book
-    a(href="/books", class="btn") Cancel
+    a(href=`/books/${book.id}/update`, class="sbtn") Update Book
+    a(href=`/books/${book.id}/delete`, class="sbtn") Delete Book
+    a(href="/books", class="sbtn") Cancel
 
 
 

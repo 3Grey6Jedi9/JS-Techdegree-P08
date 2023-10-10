@@ -151,6 +151,14 @@ input[type=text] {
   width: 300px;
 }
 
+
+input[type=number] {
+  margin-left: 7px;
+  width: 300px;
+}
+
+
+
 .error {
   color: rgb(236, 15, 15);
 }
@@ -181,6 +189,134 @@ input[type=text] {
 
 /* new book */
 
+
+.nbtn {
+
+  background-color: #019875;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+  display: block;
+  margin-bottom: 20px;
+  margin-left: 20px;
+
+
+}
+
+.nbtn:hover {
+  background-color: darkblue;
+
+}
+
+
+a.nbtn {
+  background-color: #019875;
+  color: white;
+  padding: 7px 13px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 20px;
+  font-size: 15px;
+  display: block;
+  margin-bottom: 20px;
+  width: fit-content;
+
+}
+
+a.nbtn:hover {
+  background-color: darkblue;
+  color: white;
+
+}
+
+/* end new book */
+
+
+
+
+
+/* show book */
+
+
+
+.shul {
+  width: 50%;
+  margin-top: 200px;
+  margin-left: 500px;
+  margin-right: 300px;
+  margin-bottom: 40px;
+}
+
+
+.shul li {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-bottom: 30px;
+
+}
+
+
+
+
+
+.sbtn {
+
+  background-color: #019875;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+  display: block;
+  margin-bottom: 20px;
+  margin-left: 500px;
+
+
+}
+
+.sbtn:hover {
+  background-color: darkblue;
+
+}
+
+
+a.sbtn {
+  background-color: #019875;
+  color: white;
+  padding: 7px 13px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 500px;
+  font-size: 15px;
+  display: block;
+  margin-bottom: 20px;
+  width: fit-content;
+
+}
+
+a.sbtn:hover {
+  background-color: darkblue;
+  color: white;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* end show book */
 
 
 
